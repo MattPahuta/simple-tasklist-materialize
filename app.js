@@ -74,10 +74,10 @@ function addTask(e) {
 // Add to Local Storage
 function storeTaskInLocalStorage(task) {
   let tasks;
-  if (localStorage.getItem('tasks') === null) {
-    tasks = [];
+  if (localStorage.getItem('tasks') === null) { // if there's no 'tasks' item in local storage
+    tasks = []; // add a 'tasks' item
   } else {
-    tasks = JSON.parse(localStorage.getItem('tasks'));
+    tasks = JSON.parse(localStorage.getItem('tasks')); // if there's already tasks, get them
   }
   tasks.push(task);
 
