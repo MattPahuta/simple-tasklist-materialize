@@ -144,3 +144,21 @@ function filterTasks(e) {
     }
   })
 }
+
+// add listener to ul of tasks
+taskList.addEventListener('click', function(e){
+  // console.log(`The event target tag is: ${event.target.tagName}`)
+  let clickedListItem = e.target;
+  // Delete Todo LI from list and local storage
+  if (e.target.tagName === 'BUTTON'){
+    // loop through the localstorage array
+    for (let i=0; i<savedTodos.length; i++){
+      // check if savedTodo task matches the innerText of the previousSibling (<span>) of the button clicked
+      if (savedTodos[i].task === e.target.previousSibling.innerText) {
+        savedTodos.splice(i,1);
+        e.target.parentElement.remove();
+        localStorage.setItem('todos', JSON.stringify(savedTodos));
+      }
+    }
+  }
+});
